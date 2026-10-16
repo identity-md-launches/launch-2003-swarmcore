@@ -1,0 +1,24 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "SwarmCore",
+    "name": "SwarmCore",
+    "symbol": "SWARMCORE",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "economics": {
+    "poolBps": 8000,
+    "initialMarketCapWei": "7500000000000000000000",
+    "remainderTo": "0xd0116c7e933029a0abfa388757a3d7a7686ee681"
+  },
+  "notes": "SwarmCore (SWARMCORE) is a fixed-supply ERC-20 in src/SwarmCore.sol. Its constructor takes no arguments and mints the whole supply of 1,000,000,000 tokens with 18 decimals (1000000000000000000000000000 minor units) once to msg.sender, which under the launch is the factory. totalSupply() is a compile-time constant: there is no mint, burn, burnFrom, owner, minter, pause, blacklist, freeze, fee on transfer, upgrade path, delegatecall or selfdestruct, and no library is linked. Every transfer, including those from the factory, the pool manager and the launch's MerkleDistributor, moves exactly the amount requested, so no exemption list is needed and the token does not take $factory, $poolManager or $launchNumber. transferFrom treats an allowance of type(uint256).max as unlimited. There are no application contracts and no initialization calls. The factory pays the supply out: 10% to the launch's MerkleDistributor, 80% to the single-sided Uniswap v4 pool paired with IMD (0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7) at the launch policy's 1.25% fee with tick spacing 60, and the remaining 10% to economics.remainderTo. pool.initialPrice is provenance only; the deployer derives the opening price from economics.initialMarketCapWei (7,500 IMD for the whole supply) and token.totalSupply."
+}
